@@ -92,7 +92,7 @@ router.post("/verify", (req, res) => {
             res.status(200).send({
               ok: true,
               message: "Tiene permisos",
-              info: permisos,
+              info: permisos_modulo,
             });
           } else {
             res.status(403).send({
