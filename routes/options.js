@@ -8,7 +8,7 @@ const {   validar_opcion,
   eliminar_opcion,
   eliminar_opcion_completa,
   ver_opcion,
-  traer_permisos } = require("../controllers/options");
+  traer_permisos,traer_permisos_acc } = require("../controllers/options");
 
 /**
  * Obtener todos las opciones
@@ -147,6 +147,20 @@ router.put("/options/:nombre", (req, res) => {
 router.get("/permisos/:id", (req, res) => {
   let info_option = req.params.id;
   traer_permisos(info_option)
+  .then(answerDB => {
+    let records = answerDB.rows;
+    res.send({ ok: true, info: answerDB.rows, mensaje: "Opción consultada" });
+  
+  })
+  .catch(error => {
+    res.send(error);
+  });
+  
+});
+
+router.get("/permisos2/:id", (req, res) => {
+  let info_option = req.params.id;
+  traer_permisos_acc(info_option)
   .then(answerDB => {
     let records = answerDB.rows;
     res.send({ ok: true, info: answerDB.rows, mensaje: "Opción consultada" });
