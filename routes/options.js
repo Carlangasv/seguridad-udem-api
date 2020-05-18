@@ -144,9 +144,9 @@ router.put("/options/:nombre", (req, res) => {
 /**
  * Obtener los permisos
  */
-router.get("/permisos/:id", (req, res) => {
+router.get("/permisos2/:id", (req, res) => {
   let info_option = req.params.id;
-  traer_permisos(info_option)
+  traer_permisos_acc(info_option)
   .then(answerDB => {
     let records = answerDB.rows;
     res.send({ ok: true, info: answerDB.rows, mensaje: "Opción consultada" });
@@ -158,9 +158,9 @@ router.get("/permisos/:id", (req, res) => {
   
 });
 
-router.get("/permisos2/:id", (req, res) => {
+router.get("/permisos/:id", (req, res) => {
   let info_option = req.params.id;
-  traer_permisos_acc(info_option)
+  traer_permisos(info_option)
   .then(answerDB => {
     let records = answerDB.rows;
     res.send({ ok: true, info: answerDB.rows, mensaje: "Opción consultada" });

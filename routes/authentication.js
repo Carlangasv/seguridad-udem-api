@@ -77,7 +77,7 @@ router.post("/verify", (req, res) => {
     let info = _controller.descifrar_token(token);
     let body = req.body;
     let permisos_modulo = [];
-    traer_permisos_acc(info.id)
+    traer_permisos(info.id)
       .then((answerDB) => {
         let permisos = answerDB.rows;
         if (permisos) {

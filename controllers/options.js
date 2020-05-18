@@ -86,16 +86,16 @@ let eliminar_opcion_completa = async (nombre ,opcion) => {
 
 let traer_permisos = async (id) => {
   let _service = new ServicePG();
-  let sql = `SELECT acc_modulos.proyecto as "Proyecto", acc_modulos.nombre as "Modulo",acc_modulos.url as "Url" FROM acc_usuarios INNER JOIN acc_opciones on acc_usuarios.rol = acc_opciones.rol INNER JOIN acc_modulos on acc_modulos.id = acc_opciones.module INNER JOIN acc_acciones on acc_opciones.accion = acc_acciones.id
-  WHERE acc_usuarios.id = '${id}' group by acc_modulos.proyecto,acc_modulos.nombre,acc_modulos.url`;
+  let sql = `SELECT acc_modulos.proyecto as "Proyecto", acc_modulos.nombre as "Modulo", acc_modulos.url as "Url", acc_opciones.nombre as "Opción", acc_acciones.nombre as "Acción" FROM acc_usuarios INNER JOIN acc_opciones on acc_usuarios.rol = acc_opciones.rol INNER JOIN acc_modulos on acc_modulos.id = acc_opciones.module INNER JOIN acc_acciones on acc_opciones.accion = acc_acciones.id
+  WHERE acc_usuarios.id = '${id}'`;
   let respuesta = await _service.runSql(sql);
   return respuesta;
 };
 
 let traer_permisos_acc = async(id) =>{
   let _service = new ServicePG();
-  let sql = `SELECT acc_modulos.proyecto as "Proyecto", acc_modulos.nombre as "Modulo", acc_modulos.url as "Url", acc_opciones.nombre as "Opción", acc_acciones.nombre as "Acción" FROM acc_usuarios INNER JOIN acc_opciones on acc_usuarios.rol = acc_opciones.rol INNER JOIN acc_modulos on acc_modulos.id = acc_opciones.module INNER JOIN acc_acciones on acc_opciones.accion = acc_acciones.id
-  WHERE acc_usuarios.id = '${id}'`;
+  let sql = `SELECT acc_modulos.proyecto as "Proyecto", acc_modulos.nombre as "Modulo",acc_modulos.url as "Url" FROM acc_usuarios INNER JOIN acc_opciones on acc_usuarios.rol = acc_opciones.rol INNER JOIN acc_modulos on acc_modulos.id = acc_opciones.module INNER JOIN acc_acciones on acc_opciones.accion = acc_acciones.id
+  WHERE acc_usuarios.id = '${id}' group by acc_modulos.proyecto,acc_modulos.nombre,acc_modulos.url`;
   let respuesta = await _service.runSql(sql)
   return respuesta
 }
