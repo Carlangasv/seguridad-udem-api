@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "production_wd": "set MODE=production&&node app.js",
-  
-    "start": "MODE=production node app.js",
+    "production": " node app.js",  
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
