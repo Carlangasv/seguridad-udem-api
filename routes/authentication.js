@@ -27,7 +27,6 @@ router.post("/login", (req, res) => {
       .consultar_usuario(body)
       .then((answerDB) => {
         let usuario = answerDB.rowCount > 0 ? answerDB.rows[0] : undefined;
-
         if (usuario) {
           let token = _controller.generar_token(usuario);
           res.status(200).send({
@@ -83,7 +82,7 @@ router.post("/verify", (req, res) => {
         if (permisos) {
           let tiene_permiso = false;
           for (let i in permisos) {
-            if (permisos[i].Modulo == body.Modulo) {
+            if (permisos[i].Modulo === body.Modulo) {
               permisos_modulo.push(permisos[i]);
               tiene_permiso = true;
             }

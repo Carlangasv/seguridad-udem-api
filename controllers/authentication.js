@@ -27,7 +27,7 @@ let consultar_usuario = async (usuario) => {
     let values = [usuario.id, usuario.clave]
     let respuesta = await _service.runSql(sql, values);
     return respuesta;
-  };
+};
 
   let generar_token = (usuario) =>{
     delete usuario.clave;
